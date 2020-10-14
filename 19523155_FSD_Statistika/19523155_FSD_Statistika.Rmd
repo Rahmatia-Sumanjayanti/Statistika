@@ -1,0 +1,117 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+dataCredit <- Credit
+head(dataCredit)
+```
+
+#SOAL STATISTIKA
+Using R, compute the following tasks.
+
+#1. Compute the mean and the median of Rating, Cards, and Age
+```{r}
+median(dataCredit$Rating)
+```
+```{r}
+median(dataCredit$Cards)
+```
+```{r}
+median(dataCredit$Age)
+```
+
+#2. Compute the mode of Gender, Student, and Married
+```{r}
+modeOf(dataCredit$Gender)
+```
+```{r}
+modeOf(dataCredit$Student)
+```
+```{r}
+modeOf(dataCredit$Married)
+```
+
+#3. Compute the sample 10, 37, and 91 percentiles of Education
+```{r}
+quantile(x= dataCredit$Education, probs = 0.1)
+```
+```{r}
+quantile(x= dataCredit$Education, probs = 0.39)
+```
+```{r}
+quantile(x= dataCredit$Education, probs = 0.91)
+```
+
+#4. Compute the quartiles of Balance and its corresponding boxplot
+```{r}
+quantile(x= dataCredit$Balance, probs = c(0.25, 0.50, 0.75))
+```
+```{r}
+boxplot(dataCredit$Balance, horizontal = TRUE)
+```
+
+#5. Compute the correlation and the scatter plot between pairs of Limit and Rating, Age and Card, Income and Education
+#Limit and Rating
+```{r}
+newData <- data.frame(limit = dataCredit$Limit, rating = dataCredit$Rating)
+newData
+```
+
+```{r}
+plot(newData$limit, newData$rating)
+```
+```{r}
+cor(newData)
+```
+#Age and Card
+```{r}
+newData <- data.frame(age = dataCredit$Age, cards = dataCredit$Cards)
+newData
+```
+
+```{r}
+plot(newData$age, newData$cards)
+```
+```{r}
+cor(newData)
+```
+#Income and Education
+```{r}
+newData <- data.frame(income = dataCredit$Income, education = dataCredit$Education)
+newData
+```
+
+```{r}
+plot(newData$income, newData$education)
+```
+```{r}
+cor(newData)
+```
+
+#SOAL PROBABILITAS
+kita melempar dadu sebanyak n = 10 kali dan x adalah banyaknya angka 2 setelah semua lemparan. probabilitas kemunculan angka 2 dalam satu kali lemparan adalah p = 1/2, berapakah probabilitas kita mendapatkan
+x = 6 angka 2, dari n = 10 lemparan.
+
+```{r}
+dbinom(x = 6, size = 10, prob = 1/2)
+```
+X<=6
+```{r}
+pbinom(q=6,size = 10, prob = 1/2)
+```
+Percentile ke-75
+```{r}
+qbinom(p = 0.75, size = 10, prob = 1/3)
+```
+simulasi 50 binomial random variabel
+
+```{r}
+rbinom(n= 50, size = 10, prob = 1/2)
+```
+
+
+
+
+
+
